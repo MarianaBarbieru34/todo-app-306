@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Stack from "react-bootstrap/Stack";
 
-export const TodoCard = () => {
+export const TodoCard = ({ handleClose, handleShow }) => {
   return (
     <Card className="my-3">
       <Card.Header>Card title</Card.Header>
@@ -15,18 +15,18 @@ export const TodoCard = () => {
           <Stack direction="horizontal" className="justify-content-between">
             <div>Status</div>
             <div className="text-danger fs-4 px-2">
-              <i class="fa-solid fa-xmark"></i>
+              <i className="fa-solid fa-xmark"></i>
             </div>
           </Stack>
         </Stack>
       </Card.Body>
       <Card.Footer>
         <Stack direction="horizontal" className="justify-content-center">
-          <Button variant="light" className="mx-3">
-            <i class="fa-regular fa-pen-to-square"></i>
+          <Button variant="light" className="mx-3" onClick={handleShow}>
+            <i className="fa-regular fa-pen-to-square"></i>
           </Button>
           <Button variant="light" className="mx-3">
-            <i class="fa-solid fa-trash"></i>
+            <i className="fa-solid fa-trash"></i>
           </Button>
         </Stack>
       </Card.Footer>
