@@ -12,6 +12,8 @@ export const TodoList = ({ handleClose, handleShow }) => {
         <Button variant="danger">Clear List</Button>
       </div>
       <TodoCard handleClose={handleClose} handleShow={handleShow} />
+      <TodoCard handleClose={handleClose} handleShow={handleShow} />
+      <TodoCard handleClose={handleClose} handleShow={handleShow} />
     </Stack>
   );
 };
