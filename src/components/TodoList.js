@@ -5,7 +5,7 @@ import { TodoCard } from "./TodoCard";
 
 export const TodoList = () => {
   return (
-    <Stack>
+    <Stack className="p-4 border my-3 rounded">
       <h2 className="text-center">To Do List</h2>
       <hr />
       <div className="text-center">
