@@ -3,19 +3,33 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
-export const EditModal = ({ handleClose, showModal, itemSelected }) => {
+export const EditModal = ({
+  handleClose,
+  showModal,
+  itemSelected,
+  editItem,
+}) => {
   const [title, setTitle] = useState(itemSelected.title);
+  const [status, setStatus] = useState(itemSelected.status);
   const [error, setError] = useState("");
 
   const handleOnChangeTitle = (event) => {
     setTitle(event.currentTarget.value);
   };
 
+  const handleStatusChange = (event) => {
+    setStatus(event.currentTarget.checked ? "COMPLETE" : "INCOMPLETE");
+  };
+
   const handleSaveClick = () => {
     if (!title) {
       setError("Please enter a valid title.");
     } else {
-      // edit item with new title and status
+      editItem({
+        ...itemSelected,
+        title,
+        status,
+      });
       handleClose();
     }
   };
@@ -40,7 +54,8 @@ export const EditModal = ({ handleClose, showModal, itemSelected }) => {
             type="switch"
             id="custom-switch"
             label="Complete"
-            checked={itemSelected.status === "COMPLETE"}
+            checked={status === "COMPLETE"}
+            onChange={handleStatusChange}
           />
         </Form.Group>
       </Modal.Body>

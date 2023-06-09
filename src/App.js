@@ -44,6 +44,34 @@ export const App = () => {
     setTodoItems(newItems);
   };
 
+  const editItem = (editedItem) => {
+    const itemsFromLocalStorage = getFromLocalStorage("todoItems");
+
+    const newItems = itemsFromLocalStorage.map((itemFromLocalStorage) => {
+      if (itemFromLocalStorage.id === editedItem.id) {
+        return editedItem;
+      } else {
+        return itemFromLocalStorage;
+      }
+    });
+
+    localStorage.setItem("todoItems", JSON.stringify(newItems));
+
+    setTodoItems(newItems);
+  };
+
+  const deleteItem = (itemId) => {
+    const itemsFromLocalStorage = getFromLocalStorage("todoItems");
+
+    const newItems = itemsFromLocalStorage.filter((itemFromLocalStorage) => {
+      return itemFromLocalStorage.id !== itemId;
+    });
+
+    localStorage.setItem("todoItems", JSON.stringify(newItems));
+
+    setTodoItems(newItems);
+  };
+
   const clearTodoItems = () => {
     localStorage.removeItem("todoItems");
 
@@ -61,6 +89,7 @@ export const App = () => {
           handleClose={handleClose}
           showModal={showModal}
           itemSelected={itemSelected}
+          editItem={editItem}
         />
       )}
       <Banner />
@@ -72,6 +101,7 @@ export const App = () => {
           todoItems={todoItems}
           clearTodoItems={clearTodoItems}
           selectItem={selectItem}
+          deleteItem={deleteItem}
         />
       )}
     </Container>

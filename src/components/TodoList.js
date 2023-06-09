@@ -9,6 +9,7 @@ export const TodoList = ({
   handleShow,
   todoItems,
   selectItem,
+  deleteItem,
 }) => {
   return (
     <Stack className="p-4 border my-3 rounded">
@@ -32,6 +33,7 @@ export const TodoList = ({
                 todoItem={todoItem}
                 key={todoItem.id}
                 selectItem={selectItem}
+                deleteItem={deleteItem}
               />
             );
           })}
